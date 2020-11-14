@@ -8,16 +8,23 @@
     tools:context=".PrepareLevel">
 
     <androidx.appcompat.widget.Toolbar
+        android:id="@+id/toolbar"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:background="@color/primary"
         app:title="Level 1 Hazırlanıyor" />
 
     <GridView
+        android:id="@+id/gridView"
+        android:gravity="center"
         android:layout_width="match_parent"
         android:layout_height="0dp"
-        android:layout_weight="0.75"
-        android:numColumns="10" />
+        android:layout_weight="1"
+        android:verticalSpacing="0dp"
+        android:horizontalSpacing="0dp"
+        android:columnWidth="50dp"
+        android:stretchMode="columnWidth"
+        android:numColumns="10"/>
 
     <LinearLayout
         android:layout_width="match_parent"
