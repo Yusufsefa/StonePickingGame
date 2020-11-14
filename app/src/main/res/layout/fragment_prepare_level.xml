@@ -17,45 +17,51 @@
     <GridView
         android:id="@+id/gridView"
         android:gravity="center"
-        android:layout_width="match_parent"
+        android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:horizontalSpacing="-120dp"
-        android:numColumns="10"
-        />
+        android:horizontalSpacing="-60dp"
+        android:numColumns="10" />
 
     <View
         android:layout_width="match_parent"
         android:layout_height="0dp"
-        android:layout_weight="1"/>
+        android:layout_weight="1" />
 
- <LinearLayout
+    <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:gravity="center"
         android:orientation="horizontal">
 
-        <androidx.appcompat.widget.AppCompatToggleButton
+        <ToggleButton
+            android:id="@+id/toggleMainStone"
             android:layout_width="100dp"
             android:layout_height="100dp"
             android:drawableTop="@drawable/ic_mainstone"
             android:drawableTint="@color/primary"
             android:textOff="Ana Taş"
-            android:textOn="Ana Taş" />
+            android:textOn="Ana Taş"
+            android:background="@drawable/toggle_selector"
+            />
 
-        <androidx.appcompat.widget.AppCompatToggleButton
+        <ToggleButton
+            android:id="@+id/toggleNormalStone"
             android:layout_width="100dp"
             android:layout_height="100dp"
             android:drawableTop="@drawable/ic_normalstone"
             android:drawableTint="@color/primary"
             android:textOff="Normal Taş"
+            android:background="@drawable/toggle_selector"
             android:textOn="Normal Taş" />
 
-        <androidx.appcompat.widget.AppCompatToggleButton
+        <ToggleButton
+            android:id="@+id/toggleWallStone"
             android:layout_width="100dp"
             android:layout_height="100dp"
             android:drawableTop="@drawable/ic_wall"
             android:drawableTint="@color/primary"
             android:textOff="Duvar"
+            android:background="@drawable/toggle_selector"
             android:textOn="Duvar" />
 
     </LinearLayout>
