@@ -1,0 +1,62 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    tools:context=".PrepareLevel">
+
+    <androidx.appcompat.widget.Toolbar
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@color/primary"
+        app:title="Level 1 Hazırlanıyor" />
+
+    <GridView
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="0.75"
+        android:columnCount="10"
+        android:rowCount="10" />
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:gravity="center"
+        android:orientation="horizontal">
+
+        <androidx.appcompat.widget.AppCompatToggleButton
+            android:layout_width="100dp"
+            android:layout_height="100dp"
+            android:drawableTop="@drawable/ic_mainstone"
+            android:drawableTint="@color/primary"
+            android:textOff="Ana Taş"
+            android:textOn="Ana Taş" />
+
+        <androidx.appcompat.widget.AppCompatToggleButton
+            android:layout_width="100dp"
+            android:layout_height="100dp"
+            android:drawableTop="@drawable/ic_normalstone"
+            android:drawableTint="@color/primary"
+            android:textOff="Normal Taş"
+            android:textOn="Normal Taş" />
+
+        <androidx.appcompat.widget.AppCompatToggleButton
+            android:layout_width="100dp"
+            android:layout_height="100dp"
+            android:drawableTop="@drawable/ic_wall"
+            android:drawableTint="@color/primary"
+            android:textOff="Duvar"
+            android:textOn="Duvar" />
+
+    </LinearLayout>
+
+    <Button
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_margin="5dp"
+        android:background="#ffffff"
+        android:text="Kaydet" />
+
+</LinearLayout>
