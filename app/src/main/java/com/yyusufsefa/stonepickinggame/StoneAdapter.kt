@@ -26,10 +26,27 @@ class StoneAdapter(
             R.layout.blackboard
         else
             R.layout.whiteboard
-        val view = LayoutInflater.from(context).inflate(temp, p2, false)
-        view.setOnClickListener{
-            onClick(gridItemList,item)
+
+        var view = LayoutInflater.from(context).inflate(temp, p2, false)
+
+        view.setOnClickListener {
+            onClick(gridItemList, item)
         }
+
+        when (item.mode) {
+            StoneType.MAıNSTONE -> {
+                view = LayoutInflater.from(context).inflate(R.layout.stonemain, p2, false)
+            }
+
+            StoneType.NORMALSTONE -> {
+                view = LayoutInflater.from(context).inflate(R.layout.stonenormal, p2, false)
+            }
+
+            StoneType.WALL -> {
+                view = LayoutInflater.from(context).inflate(R.layout.wall, p2, false)
+            }
+        }
+
         return view
     }
 

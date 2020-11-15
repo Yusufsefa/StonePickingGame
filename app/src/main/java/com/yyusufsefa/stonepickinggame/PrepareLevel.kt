@@ -1,10 +1,8 @@
 package com.yyusufsefa.stonepickinggame
 
-import android.graphics.Color
 import android.os.Bundle
 import android.view.View
 import android.widget.Toast
-import androidx.core.content.ContextCompat
 import androidx.fragment.app.Fragment
 import kotlinx.android.synthetic.main.fragment_prepare_level.*
 
