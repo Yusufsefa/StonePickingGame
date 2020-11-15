@@ -1,8 +1,7 @@
 package com.yyusufsefa.stonepickinggame
 
-enum class StoneType {
-    NONE,
-    NORMALSTONE,
+enum class GridType {
     MAINSTONE,
+    NORMALSTONE,
     WALL
 }

@@ -1,7 +1,29 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="30dp"
     android:layout_height="30dp"
-    android:background="#FF0000">
+    android:background="#02FFFFFF">
 
-</LinearLayout>
+    <ImageView
+        android:id="@+id/imgWbWall"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:src="@drawable/ic_wall"
+        app:tint="#000000" />
+
+    <ImageView
+        android:id="@+id/imgWbNormal"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:src="@drawable/ic_normalstone"
+        app:tint="#000000" />
+
+    <ImageView
+        android:id="@+id/imgWbMain"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:src="@drawable/ic_mainstone"
+        app:tint="#000000" />
+
+</FrameLayout>

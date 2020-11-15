@@ -19,6 +19,7 @@
         android:gravity="center"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:background="@drawable/gridviewborder"
         android:horizontalSpacing="-60dp"
         android:numColumns="10" />
 
@@ -35,19 +36,22 @@
 
         <ToggleButton
             android:id="@+id/toggleMainStone"
-            android:layout_width="100dp"
-            android:layout_height="100dp"
+            android:layout_width="80dp"
+            android:layout_height="80dp"
+            android:layout_margin="8dp"
+            android:padding="5dp"
             android:drawableTop="@drawable/ic_mainstone"
             android:drawableTint="@color/primary"
             android:textOff="Ana Taş"
             android:textOn="Ana Taş"
-            android:background="@drawable/toggle_selector"
-            />
+            android:background="@drawable/toggle_selector" />
 
         <ToggleButton
             android:id="@+id/toggleNormalStone"
-            android:layout_width="100dp"
-            android:layout_height="100dp"
+            android:layout_width="80dp"
+            android:layout_height="80dp"
+            android:layout_margin="8dp"
+            android:padding="5dp"
             android:drawableTop="@drawable/ic_normalstone"
             android:drawableTint="@color/primary"
             android:textOff="Normal Taş"
@@ -56,8 +60,10 @@
 
         <ToggleButton
             android:id="@+id/toggleWallStone"
-            android:layout_width="100dp"
-            android:layout_height="100dp"
+            android:layout_width="80dp"
+            android:layout_height="80dp"
+            android:layout_margin="8dp"
+            android:padding="5dp"
             android:drawableTop="@drawable/ic_wall"
             android:drawableTint="@color/primary"
             android:textOff="Duvar"
