@@ -2,16 +2,21 @@ package com.yyusufsefa.stonepickinggame
 
 import android.os.Bundle
 import android.view.View
+import android.widget.Toast
 import androidx.fragment.app.Fragment
+import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
 import com.yyusufsefa.stonepickinggame.db.GridItemRepository
 import com.yyusufsefa.stonepickinggame.db.GridRoomDatabase
+import com.yyusufsefa.stonepickinggame.model.GridItem
+import com.yyusufsefa.stonepickinggame.model.GridType
+import com.yyusufsefa.stonepickinggame.model.StoneType
 import com.yyusufsefa.stonepickinggame.viewmodel.GridViewModelFactory
 import com.yyusufsefa.stonepickinggame.viewmodel.PrepareLevelViewModel
 import kotlinx.android.synthetic.main.fragment_prepare_level.*
 import kotlinx.coroutines.InternalCoroutinesApi
 
-class PrepareLevel : Fragment(R.layout.fragment_prepare_level) {
+class PrepareLevelFragment : Fragment(R.layout.fragment_prepare_level) {
 
     private var gridType: GridType? = null
 
@@ -35,11 +40,13 @@ class PrepareLevel : Fragment(R.layout.fragment_prepare_level) {
             ::onGridViewItemClick
         )
         initToggles()
-        resetGrid()
+        btnReset.setOnClickListener { resetGrid() }
 
-        viewmodel.allGridItem.observe(viewLifecycleOwner, {
 
-        })
+        viewmodel.allGridItem.observe(viewLifecycleOwner,
+            Observer<List<GridItem>> {
+                Toast.makeText(requireContext(), "Veriler geldi baba", Toast.LENGTH_SHORT).show()
+            })
 
     }
 
@@ -88,17 +95,15 @@ class PrepareLevel : Fragment(R.layout.fragment_prepare_level) {
     }
 
     private fun resetGrid() {
-        btnReset.setOnClickListener {
-            gridView.adapter = StoneAdapter(
-                requireContext(),
-                MockList.getMockList(),
-                ::onGridViewItemClick
-            )
-            toggleNormalStone.isChecked = false
-            toggleWallStone.isChecked = false
-            toggleMainStone.isChecked = false
-            (gridView.adapter as StoneAdapter).notifyDataSetChanged()
-        }
+        gridView.adapter = StoneAdapter(
+            requireContext(),
+            MockList.getMockList(),
+            ::onGridViewItemClick
+        )
+        toggleNormalStone.isChecked = false
+        toggleWallStone.isChecked = false
+        toggleMainStone.isChecked = false
+        (gridView.adapter as StoneAdapter).notifyDataSetChanged()
     }
 
 

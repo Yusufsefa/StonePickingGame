@@ -6,6 +6,8 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.BaseAdapter
+import com.yyusufsefa.stonepickinggame.model.GridItem
+import com.yyusufsefa.stonepickinggame.model.StoneType
 import kotlinx.android.synthetic.main.blackboard.view.*
 import kotlinx.android.synthetic.main.whiteboard.view.*
 

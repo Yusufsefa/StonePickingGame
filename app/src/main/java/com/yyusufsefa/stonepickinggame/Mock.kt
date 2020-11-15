@@ -1,5 +1,8 @@
 package com.yyusufsefa.stonepickinggame
 
+import com.yyusufsefa.stonepickinggame.model.GridItem
+import com.yyusufsefa.stonepickinggame.model.StoneType
+
 
 object MockList {
     fun getMockList(): List<GridItem> {

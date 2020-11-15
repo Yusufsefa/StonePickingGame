@@ -3,7 +3,7 @@ package com.yyusufsefa.stonepickinggame.viewmodel
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
-import com.yyusufsefa.stonepickinggame.GridItem
+import com.yyusufsefa.stonepickinggame.model.GridItem
 import com.yyusufsefa.stonepickinggame.db.GridItemRepository
 import kotlinx.coroutines.launch
 

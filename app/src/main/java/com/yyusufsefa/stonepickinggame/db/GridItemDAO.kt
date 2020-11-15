@@ -5,7 +5,7 @@ import androidx.room.Dao
 import androidx.room.Insert
 import androidx.room.OnConflictStrategy
 import androidx.room.Query
-import com.yyusufsefa.stonepickinggame.GridItem
+import com.yyusufsefa.stonepickinggame.model.GridItem
 
 @Dao
 interface GridItemDAO {

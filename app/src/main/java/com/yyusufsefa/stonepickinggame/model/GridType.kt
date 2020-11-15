@@ -1,4 +1,4 @@
-package com.yyusufsefa.stonepickinggame
+package com.yyusufsefa.stonepickinggame.model
 
 enum class GridType {
     MAINSTONE,

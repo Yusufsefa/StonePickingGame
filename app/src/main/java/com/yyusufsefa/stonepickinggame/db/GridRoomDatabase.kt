@@ -4,7 +4,8 @@ import android.content.Context
 import androidx.room.Database
 import androidx.room.Room
 import androidx.room.RoomDatabase
-import com.yyusufsefa.stonepickinggame.GridItem
+import androidx.room.TypeConverters
+import com.yyusufsefa.stonepickinggame.model.GridItem
 import kotlinx.coroutines.InternalCoroutinesApi
 
 @Database(
@@ -12,6 +13,7 @@ import kotlinx.coroutines.InternalCoroutinesApi
     version = 1,
     exportSchema = false
 )
+@TypeConverters(DataTypeConverter::class)
 abstract class GridRoomDatabase : RoomDatabase() {
 
     abstract fun gridItemDao(): GridItemDAO

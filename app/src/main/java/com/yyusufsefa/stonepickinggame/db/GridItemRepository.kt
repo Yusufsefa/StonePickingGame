@@ -1,6 +1,6 @@
 package com.yyusufsefa.stonepickinggame.db
 
-import com.yyusufsefa.stonepickinggame.GridItem
+import com.yyusufsefa.stonepickinggame.model.GridItem
 
 class GridItemRepository(private val gridItemDAO: GridItemDAO) {
 

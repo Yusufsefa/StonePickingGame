@@ -7,7 +7,7 @@
 
     <fragment
         android:id="@+id/homeFragment"
-        android:name="com.yyusufsefa.stonepickinggame.HomeFragment"
+        android:name="com.yyusufsefa.stonepickinggame.fragment.HomeFragment"
         android:label="fragment_home"
         tools:layout="@layout/fragment_home" >
         <action
@@ -16,7 +16,7 @@
     </fragment>
     <fragment
         android:id="@+id/prepareLevel"
-        android:name="com.yyusufsefa.stonepickinggame.PrepareLevel"
+        android:name="com.yyusufsefa.stonepickinggame.PrepareLevelFragment"
         android:label="fragment_prepare_level"
         tools:layout="@layout/fragment_prepare_level" />
 </navigation>
