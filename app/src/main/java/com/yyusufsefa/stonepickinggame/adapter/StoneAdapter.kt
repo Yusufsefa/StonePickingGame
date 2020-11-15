@@ -1,4 +1,4 @@
-package com.yyusufsefa.stonepickinggame
+package com.yyusufsefa.stonepickinggame.adapter
 
 import android.annotation.SuppressLint
 import android.content.Context
@@ -6,6 +6,7 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.BaseAdapter
+import com.yyusufsefa.stonepickinggame.R
 import com.yyusufsefa.stonepickinggame.model.GridItem
 import com.yyusufsefa.stonepickinggame.model.StoneType
 import kotlinx.android.synthetic.main.blackboard.view.*
@@ -13,7 +14,7 @@ import kotlinx.android.synthetic.main.whiteboard.view.*
 
 class StoneAdapter(
     private val context: Context,
-    private var gridItemList: List<GridItem>,
+    val gridItemList: List<GridItem>,
     private val onClick: (clickedItem: GridItem) -> Unit
 ) : BaseAdapter() {
 

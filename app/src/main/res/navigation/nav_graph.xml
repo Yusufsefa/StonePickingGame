@@ -16,7 +16,7 @@
     </fragment>
     <fragment
         android:id="@+id/prepareLevel"
-        android:name="com.yyusufsefa.stonepickinggame.PrepareLevelFragment"
+        android:name="com.yyusufsefa.stonepickinggame.fragment.PrepareLevelFragment"
         android:label="fragment_prepare_level"
         tools:layout="@layout/fragment_prepare_level" />
 </navigation>

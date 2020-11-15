@@ -1,15 +1,18 @@
-package com.yyusufsefa.stonepickinggame
+package com.yyusufsefa.stonepickinggame.fragment
 
 import android.os.Bundle
 import android.view.View
 import android.widget.ToggleButton
 import androidx.fragment.app.Fragment
-import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
+import com.yyusufsefa.stonepickinggame.MockList
+import com.yyusufsefa.stonepickinggame.R
+import com.yyusufsefa.stonepickinggame.adapter.StoneAdapter
 import com.yyusufsefa.stonepickinggame.db.GridItemRepository
 import com.yyusufsefa.stonepickinggame.db.GridRoomDatabase
 import com.yyusufsefa.stonepickinggame.model.GridItem
 import com.yyusufsefa.stonepickinggame.model.StoneType
+import com.yyusufsefa.stonepickinggame.toast
 import com.yyusufsefa.stonepickinggame.viewmodel.GridViewModelFactory
 import com.yyusufsefa.stonepickinggame.viewmodel.PrepareLevelViewModel
 import kotlinx.android.synthetic.main.fragment_prepare_level.*
@@ -18,6 +21,11 @@ import kotlinx.coroutines.InternalCoroutinesApi
 class PrepareLevelFragment : Fragment(R.layout.fragment_prepare_level) {
 
     private var gridType: StoneType = StoneType.NONE
+
+    private var mainStoneLimit = 1
+    private var normalStoneLimit = 7
+    private val level by lazy { arguments?.getInt("level") }
+
 
     @InternalCoroutinesApi
     private val viewmodel by lazy {
@@ -33,26 +41,49 @@ class PrepareLevelFragment : Fragment(R.layout.fragment_prepare_level) {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
+        toolbar.title = "${level}. Seviye Hazırlanıyor."
+        normalStoneLimit = if (level == 1) 7 else 9
+
+        initGridView()
+        initToggles()
+        btnReset.setOnClickListener { resetGrid() }
+        btnSave.setOnClickListener { saveLevel() }
+
+    }
+
+    private fun initGridView() {
         gridView.adapter = StoneAdapter(
             requireContext(),
             MockList.getMockList(),
             ::onGridViewItemClick
         )
-        initToggles()
-        btnReset.setOnClickListener { resetGrid() }
+    }
 
-
-        viewmodel.allGridItem.observe(viewLifecycleOwner,
-            Observer<List<GridItem>> {
-                requireContext().toast("Veriler geldi baba")
-            })
-
+    private fun saveLevel() {
+        val list = (gridView.adapter as StoneAdapter).gridItemList
+        //level 1 save
+        //level 2 save
     }
 
     private fun onGridViewItemClick(clickedItem: GridItem) {
+        if (clickedItem.mode != StoneType.NONE) {
+            requireContext().toast("Seçtiğiniz kare boş değil")
+            return
+        }
+
         when (gridType) {
-            StoneType.MAINSTONE -> clickedItem.mode = StoneType.MAINSTONE
-            StoneType.NORMALSTONE -> clickedItem.mode = StoneType.NORMALSTONE
+            StoneType.MAINSTONE -> {
+                if (mainStoneLimit > 0) {
+                    clickedItem.mode = StoneType.MAINSTONE
+                    mainStoneLimit--
+                } else requireContext().toast("İlgili kategoride limit dolmuş")
+            }
+            StoneType.NORMALSTONE -> {
+                if (normalStoneLimit > 0) {
+                    clickedItem.mode = StoneType.NORMALSTONE
+                    normalStoneLimit--
+                } else requireContext().toast("İlgili kategoride limit dolmuş")
+            }
             StoneType.WALL -> clickedItem.mode = StoneType.WALL
             StoneType.NONE -> requireContext().toast("Lütfen seçim yapın")
         }
@@ -86,12 +117,10 @@ class PrepareLevelFragment : Fragment(R.layout.fragment_prepare_level) {
     }
 
     private fun resetGrid() {
-        gridView.adapter = StoneAdapter(
-            requireContext(),
-            MockList.getMockList(),
-            ::onGridViewItemClick
-        )
+        initGridView()
         toggleCheckedFalser(arrayOf(toggleNormalStone, toggleMainStone, toggleWallStone))
+        mainStoneLimit = 1
+        normalStoneLimit = 7
         (gridView.adapter as StoneAdapter).notifyDataSetChanged()
     }
 

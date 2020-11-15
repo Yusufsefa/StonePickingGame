@@ -4,21 +4,20 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:orientation="vertical"
-    tools:context=".PrepareLevel">
+    android:orientation="vertical">
 
     <androidx.appcompat.widget.Toolbar
         android:id="@+id/toolbar"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:background="@color/primary"
+        app:titleTextColor="#fff"
         app:title="Level 1 Hazırlanıyor" />
 
     <GridView
         android:id="@+id/gridView"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:background="@drawable/gridviewborder"
         android:gravity="center"
         android:horizontalSpacing="-60dp"
         android:numColumns="10" />
@@ -81,6 +80,7 @@
         android:orientation="horizontal">
 
         <Button
+            android:id="@+id/btnSave"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_margin="5dp"
