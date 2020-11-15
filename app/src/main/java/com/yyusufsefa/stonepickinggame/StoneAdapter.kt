@@ -11,7 +11,7 @@ import kotlinx.android.synthetic.main.whiteboard.view.*
 
 class StoneAdapter(
     private val context: Context,
-    private val gridItemList: List<GridItem>,
+    private var gridItemList: List<GridItem>,
     private val onClick: (clickedItem: GridItem) -> Unit
 ) : BaseAdapter() {
 
@@ -73,7 +73,6 @@ class StoneAdapter(
                 }
             }
         }
-
         return view
     }
 

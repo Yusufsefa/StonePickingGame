@@ -16,10 +16,10 @@
 
     <GridView
         android:id="@+id/gridView"
-        android:gravity="center"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:background="@drawable/gridviewborder"
+        android:gravity="center"
         android:horizontalSpacing="-60dp"
         android:numColumns="10" />
 
@@ -27,6 +27,7 @@
         android:layout_width="match_parent"
         android:layout_height="0dp"
         android:layout_weight="1" />
+
 
     <LinearLayout
         android:layout_width="match_parent"
@@ -39,23 +40,23 @@
             android:layout_width="80dp"
             android:layout_height="80dp"
             android:layout_margin="8dp"
-            android:padding="5dp"
+            android:background="@drawable/toggle_selector"
             android:drawableTop="@drawable/ic_mainstone"
             android:drawableTint="@color/primary"
+            android:padding="5dp"
             android:textOff="Ana Taş"
-            android:textOn="Ana Taş"
-            android:background="@drawable/toggle_selector" />
+            android:textOn="Ana Taş" />
 
         <ToggleButton
             android:id="@+id/toggleNormalStone"
             android:layout_width="80dp"
             android:layout_height="80dp"
             android:layout_margin="8dp"
-            android:padding="5dp"
+            android:background="@drawable/toggle_selector"
             android:drawableTop="@drawable/ic_normalstone"
             android:drawableTint="@color/primary"
+            android:padding="5dp"
             android:textOff="Normal Taş"
-            android:background="@drawable/toggle_selector"
             android:textOn="Normal Taş" />
 
         <ToggleButton
@@ -63,20 +64,40 @@
             android:layout_width="80dp"
             android:layout_height="80dp"
             android:layout_margin="8dp"
-            android:padding="5dp"
+            android:background="@drawable/toggle_selector"
             android:drawableTop="@drawable/ic_wall"
             android:drawableTint="@color/primary"
+            android:padding="5dp"
             android:textOff="Duvar"
-            android:background="@drawable/toggle_selector"
             android:textOn="Duvar" />
 
     </LinearLayout>
 
-    <Button
+    <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_margin="5dp"
-        android:background="#ffffff"
-        android:text="Kaydet" />
+        android:layout_gravity="center_horizontal"
+        android:layout_marginTop="10dp"
+        android:orientation="horizontal">
+
+        <Button
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_margin="5dp"
+            android:layout_weight="1"
+            android:background="#ffffff"
+            android:text="Kaydet" />
+
+        <Button
+            android:id="@+id/btnReset"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_margin="5dp"
+            android:layout_weight="1"
+            android:background="#ffffff"
+            android:text="Sıfırla" />
+
+    </LinearLayout>
+
 
 </LinearLayout>
