@@ -5,6 +5,7 @@ import android.view.View
 import android.widget.ToggleButton
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModelProvider
+import com.yyusufsefa.stonepickinggame.AutoGenerator
 import com.yyusufsefa.stonepickinggame.MockList
 import com.yyusufsefa.stonepickinggame.R
 import com.yyusufsefa.stonepickinggame.adapter.StoneAdapter
@@ -24,6 +25,8 @@ class PrepareLevelFragment : Fragment(R.layout.fragment_prepare_level) {
 
     private var mainStoneLimit = 1
     private var normalStoneLimit = 7
+    private var wallStoneLimit = 5
+
     private val level by lazy { arguments?.getInt("level") }
 
 
@@ -43,12 +46,22 @@ class PrepareLevelFragment : Fragment(R.layout.fragment_prepare_level) {
 
         toolbar.title = "${level}. Seviye Hazırlanıyor."
         normalStoneLimit = if (level == 1) 7 else 9
+        wallStoneLimit = if (level == 1) 5 else 7
 
         initGridView()
         initToggles()
         btnReset.setOnClickListener { resetGrid() }
         btnSave.setOnClickListener { saveLevel() }
-
+        btnAuto.setOnClickListener {
+            mainStoneLimit = 1
+            normalStoneLimit = if (level == 1) 7 else 9
+            wallStoneLimit = if (level == 1) 5 else 7
+            autosequence(
+                mainStoneLimit,
+                normalStoneLimit,
+                wallStoneLimit
+            )
+        }
     }
 
     private fun initGridView() {
@@ -84,7 +97,12 @@ class PrepareLevelFragment : Fragment(R.layout.fragment_prepare_level) {
                     normalStoneLimit--
                 } else requireContext().toast("İlgili kategoride limit dolmuş")
             }
-            StoneType.WALL -> clickedItem.mode = StoneType.WALL
+            StoneType.WALL -> {
+                if (wallStoneLimit > 0) {
+                    clickedItem.mode = StoneType.WALL
+                    wallStoneLimit--
+                } else requireContext().toast("İlgili kategoride limit dolmuş")
+            }
             StoneType.NONE -> requireContext().toast("Lütfen seçim yapın")
         }
         (gridView.adapter as StoneAdapter).notifyDataSetChanged()
@@ -114,13 +132,34 @@ class PrepareLevelFragment : Fragment(R.layout.fragment_prepare_level) {
 
     private fun toggleCheckedFalser(toggleList: Array<ToggleButton>) {
         toggleList.forEach { it.isChecked = false }
+        toggleList.forEach { it.isEnabled = true }
+    }
+
+    private fun toggleisEnabledFalser(toggleList: Array<ToggleButton>) {
+        toggleList.forEach { it.isEnabled = false }
     }
 
     private fun resetGrid() {
         initGridView()
-        toggleCheckedFalser(arrayOf(toggleNormalStone, toggleMainStone, toggleWallStone))
         mainStoneLimit = 1
-        normalStoneLimit = 7
+        normalStoneLimit = if (level == 1) 7 else 9
+        wallStoneLimit = if (level == 1) 5 else 7
+        toggleCheckedFalser(arrayOf(toggleNormalStone, toggleMainStone, toggleWallStone))
+        (gridView.adapter as StoneAdapter).notifyDataSetChanged()
+    }
+
+    private fun autosequence(
+        mainStone: Int,
+        normalStone: Int,
+        wall: Int
+    ) {
+        gridView.adapter = StoneAdapter(
+            requireContext(),
+            AutoGenerator.getAutoGridList(mainStone, normalStone, wall),
+            ::onGridViewItemClick
+        )
+        toggleCheckedFalser(arrayOf(toggleNormalStone, toggleMainStone, toggleWallStone))
+        toggleisEnabledFalser(arrayOf(toggleNormalStone, toggleMainStone, toggleWallStone))
         (gridView.adapter as StoneAdapter).notifyDataSetChanged()
     }
 
