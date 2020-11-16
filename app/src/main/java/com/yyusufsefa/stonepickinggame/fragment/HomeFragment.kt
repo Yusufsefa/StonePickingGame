@@ -21,5 +21,10 @@ class HomeFragment : Fragment(R.layout.fragment_home) {
             val bundle = bundleOf("level" to 2)
             findNavController().navigate(R.id.action_homeFragment_to_prepareLevel, bundle)
         }
+
+        btnPlayFirstLevel.setOnClickListener {
+            findNavController().navigate(R.id.action_homeFragment_to_playGameFragment)
+        }
+
     }
 }

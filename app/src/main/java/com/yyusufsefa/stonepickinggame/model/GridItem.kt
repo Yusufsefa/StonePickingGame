@@ -14,8 +14,12 @@ data class GridItem(
     var mode: StoneType,
     @ColumnInfo(name = "isblack")
     val isBlack: Boolean
-){
+) {
     @PrimaryKey(autoGenerate = true)
     @ColumnInfo(name = "id")
     var _id: Int? = null
+
+    @ColumnInfo(name = "level")
+    var level: Int? = null
+
 }

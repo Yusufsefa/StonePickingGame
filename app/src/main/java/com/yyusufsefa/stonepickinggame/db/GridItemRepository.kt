@@ -4,9 +4,9 @@ import com.yyusufsefa.stonepickinggame.model.GridItem
 
 class GridItemRepository(private val gridItemDAO: GridItemDAO) {
 
-    val allGridItem = gridItemDAO.getAllGridItem()
+    var allGridItem = gridItemDAO.getAllGridItem()
 
-    suspend fun insert(listGridItem: GridItem) {
+    suspend fun insert(listGridItem: List<GridItem>) {
         gridItemDAO.insert(listGridItem)
     }
 

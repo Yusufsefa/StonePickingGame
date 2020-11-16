@@ -42,12 +42,14 @@
         android:background="#F0252121" />
 
     <Button
+        android:id="@+id/btnPlayFirstLevel"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginHorizontal="20dp"
         android:text="1 Seviyeyi Oyna" />
 
     <Button
+        android:id="@+id/btnPlaySecondLevel"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginHorizontal="20dp"

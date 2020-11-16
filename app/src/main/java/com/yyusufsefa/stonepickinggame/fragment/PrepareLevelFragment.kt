@@ -29,7 +29,6 @@ class PrepareLevelFragment : Fragment(R.layout.fragment_prepare_level) {
 
     private val level by lazy { arguments?.getInt("level") }
 
-
     @InternalCoroutinesApi
     private val viewmodel by lazy {
         ViewModelProvider(
@@ -62,6 +61,7 @@ class PrepareLevelFragment : Fragment(R.layout.fragment_prepare_level) {
                 wallStoneLimit
             )
         }
+
     }
 
     private fun initGridView() {
@@ -72,10 +72,17 @@ class PrepareLevelFragment : Fragment(R.layout.fragment_prepare_level) {
         )
     }
 
+    @InternalCoroutinesApi
     private fun saveLevel() {
         val list = (gridView.adapter as StoneAdapter).gridItemList
-        //level 1 save
-        //level 2 save
+
+        for (x in list.indices) {
+            if (level == 1)
+                list[x].level = 1
+            else
+                list[x].level = 2
+        }
+        viewmodel.insert(list)
     }
 
     private fun onGridViewItemClick(clickedItem: GridItem) {

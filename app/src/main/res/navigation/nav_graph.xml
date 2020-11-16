@@ -9,14 +9,22 @@
         android:id="@+id/homeFragment"
         android:name="com.yyusufsefa.stonepickinggame.fragment.HomeFragment"
         android:label="fragment_home"
-        tools:layout="@layout/fragment_home" >
+        tools:layout="@layout/fragment_home">
         <action
             android:id="@+id/action_homeFragment_to_prepareLevel"
             app:destination="@id/prepareLevel" />
+        <action
+            android:id="@+id/action_homeFragment_to_playGameFragment"
+            app:destination="@id/playGameFragment" />
     </fragment>
     <fragment
         android:id="@+id/prepareLevel"
         android:name="com.yyusufsefa.stonepickinggame.fragment.PrepareLevelFragment"
         android:label="fragment_prepare_level"
         tools:layout="@layout/fragment_prepare_level" />
+    <fragment
+        android:id="@+id/playGameFragment"
+        android:name="com.yyusufsefa.stonepickinggame.fragment.PlayGameFragment"
+        android:label="fragment_play_game"
+        tools:layout="@layout/fragment_play_game" />
 </navigation>

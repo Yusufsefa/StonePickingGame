@@ -11,7 +11,7 @@ import com.yyusufsefa.stonepickinggame.model.GridItem
 interface GridItemDAO {
 
     @Insert(onConflict = OnConflictStrategy.IGNORE)
-    suspend fun insert(gridItem: GridItem)
+    suspend fun insert(gridItem: List<GridItem>)
 
     @Query("SELECT * from grid_item")
     fun getAllGridItem(): LiveData<List<GridItem>>
