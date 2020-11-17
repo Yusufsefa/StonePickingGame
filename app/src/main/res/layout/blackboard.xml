@@ -1,14 +1,25 @@
 <?xml version="1.0" encoding="utf-8"?>
-<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="30dp"
     android:layout_height="30dp"
+    xmlns:tools="http://schemas.android.com/tools"
     android:layout_weight="1"
     android:background="#A8A5A5">
+
+    <TextView
+        android:id="@+id/txtBlackBoard"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_centerInParent="true"
+        android:textColor="#F60606"
+        android:textSize="25sp"
+        tools:text="9" />
 
     <ImageView
         android:id="@+id/imgBbWall"
         android:layout_width="match_parent"
+        tools:visibility="invisible"
         android:layout_height="match_parent"
         android:src="@drawable/ic_wall"
         app:tint="#000000" />
@@ -16,15 +27,17 @@
     <ImageView
         android:id="@+id/imgBbNormal"
         android:layout_width="match_parent"
+        tools:visibility="invisible"
         android:layout_height="match_parent"
         android:src="@drawable/ic_normalstone"
         app:tint="#000000" />
 
     <ImageView
         android:id="@+id/imgBbMain"
+        tools:visibility="invisible"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:src="@drawable/ic_mainstone"
         app:tint="#000000" />
 
-</FrameLayout>
+</RelativeLayout>

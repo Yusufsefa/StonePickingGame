@@ -23,4 +23,7 @@ data class GridItem(
     var level: Int? = null
     var isBackgroundActive = false
 
+    @ColumnInfo(name = "maxmove")
+    var maxMove: Int? = null
+
 }

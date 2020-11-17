@@ -82,7 +82,34 @@ class PrepareLevelFragment : Fragment(R.layout.fragment_prepare_level) {
             else
                 list[x].level = 2
         }
+        calculateMaxMove(list)
         viewmodel.insert(list)
+    }
+
+    private fun calculateMaxMove(list: List<GridItem>) {
+        var mainX = 0
+        var mainY = 0
+        var normalX = 0
+        var normalY = 0
+        for (x in list.indices) {
+            if (list[x].mode == StoneType.MAINSTONE) {
+                mainX = list[x].x
+                mainY = list[x].y
+            }
+            if (list[x].mode == StoneType.NORMALSTONE) {
+                normalX = if (mainX > list[x].x) {
+                    (mainX - list[x].x)
+                } else {
+                    (list[x].x - mainX)
+                }
+                normalY = if (mainY > list[x].y) {
+                    (mainY - list[x].y)
+                } else {
+                    (list[x].y - mainY)
+                }
+            }
+            list[x].maxMove = (normalX + normalY)
+        }
     }
 
     private fun onGridViewItemClick(clickedItem: GridItem) {

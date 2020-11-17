@@ -48,11 +48,10 @@ class StoneAdapter(
                 StoneType.MAINSTONE -> {
                     view.imgBbMain.visibility = View.VISIBLE
                 }
-
                 StoneType.NORMALSTONE -> {
                     view.imgBbNormal.visibility = View.VISIBLE
+                    view.txtBlackBoard.text = item.maxMove.toString()
                 }
-
                 StoneType.WALL -> {
                     view.imgBbWall.visibility = View.VISIBLE
                 }
@@ -67,11 +66,10 @@ class StoneAdapter(
                 StoneType.MAINSTONE -> {
                     view.imgWbMain.visibility = View.VISIBLE
                 }
-
                 StoneType.NORMALSTONE -> {
                     view.imgWbNormal.visibility = View.VISIBLE
+                    view.txtWhiteBoard.text = item.maxMove.toString()
                 }
-
                 StoneType.WALL -> {
                     view.imgWbWall.visibility = View.VISIBLE
                 }

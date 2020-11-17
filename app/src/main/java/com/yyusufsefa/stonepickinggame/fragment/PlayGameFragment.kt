@@ -3,7 +3,6 @@ package com.yyusufsefa.stonepickinggame.fragment
 import android.os.Bundle
 import android.view.View
 import androidx.fragment.app.Fragment
-import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
 import com.yyusufsefa.stonepickinggame.R
 import com.yyusufsefa.stonepickinggame.adapter.StoneAdapter
@@ -42,16 +41,14 @@ class PlayGameFragment : Fragment(R.layout.fragment_play_game) {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
-        viewmodel.allGridItem.observe(viewLifecycleOwner,
-            Observer<List<GridItem>> { it ->
-                gridList = it.filter { it.level == level }
-                gridViewPlayGame.adapter = StoneAdapter(
-                    requireContext(),
-                    gridList!!,
-                    ::onClick
-                )
-            })
-
+        viewmodel.allGridItem.observe(viewLifecycleOwner, { it ->
+            gridList = it.filter { it.level == level }
+            gridViewPlayGame.adapter = StoneAdapter(
+                requireContext(),
+                gridList!!,
+                ::onClick
+            )
+        })
     }
 
     private fun onClick(clickedItem: GridItem) {
@@ -59,7 +56,8 @@ class PlayGameFragment : Fragment(R.layout.fragment_play_game) {
         if (isGridSelected) {
             if (clickedItem.isBackgroundActive) {
                 oldClickedItem?.mode = StoneType.NONE
-                if (clickedItem.mode != StoneType.MAINSTONE) clickedItem.mode = StoneType.NORMALSTONE
+                if (clickedItem.mode != StoneType.MAINSTONE) clickedItem.mode =
+                    StoneType.NORMALSTONE
                 else requireContext().toast("Taş toplandı")
                 isGridSelected = false
                 resetAllMovableBackground()
@@ -84,10 +82,10 @@ class PlayGameFragment : Fragment(R.layout.fragment_play_game) {
     private fun gridMovableBackgroundChanger() {
         val i = gridList!!.indexOf(oldClickedItem)
         val indexList = mutableListOf<Int>()
-        if (oldClickedItem?.x != 1) indexList.add(i-10)
-        if (oldClickedItem?.x != 10) indexList.add(i+10)
-        if (oldClickedItem?.y != 1) indexList.add(i-1)
-        if (oldClickedItem?.y != 10) indexList.add(i+1)
+        if (oldClickedItem?.x != 1) indexList.add(i - 10)
+        if (oldClickedItem?.x != 10) indexList.add(i + 10)
+        if (oldClickedItem?.y != 1) indexList.add(i - 1)
+        if (oldClickedItem?.y != 10) indexList.add(i + 1)
         val list = indexList.map { gridList!![it] }
         list.forEach {
             if (isGridItemAvailableForBackgroundActive(it))
@@ -109,5 +107,4 @@ class PlayGameFragment : Fragment(R.layout.fragment_play_game) {
         }
         (gridViewPlayGame.adapter as StoneAdapter).notifyDataSetChanged()
     }
-
 }
