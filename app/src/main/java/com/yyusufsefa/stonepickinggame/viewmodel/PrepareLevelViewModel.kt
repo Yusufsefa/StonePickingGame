@@ -15,4 +15,8 @@ class PrepareLevelViewModel(private val repository: GridItemRepository) : ViewMo
         repository.insert(gridList)
     }
 
+    fun deleteToLevel(level: Int) = viewModelScope.launch {
+        repository.deleteToLevel(level)
+    }
+
 }

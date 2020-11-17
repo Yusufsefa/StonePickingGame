@@ -16,4 +16,7 @@ interface GridItemDAO {
     @Query("SELECT * from grid_item")
     fun getAllGridItem(): LiveData<List<GridItem>>
 
+    @Query("DELETE from grid_item WHERE level= :level")
+    suspend fun deleteToLevel(level: Int)
+
 }

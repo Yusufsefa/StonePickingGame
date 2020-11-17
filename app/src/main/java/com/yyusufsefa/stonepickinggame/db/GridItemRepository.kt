@@ -10,4 +10,8 @@ class GridItemRepository(private val gridItemDAO: GridItemDAO) {
         gridItemDAO.insert(listGridItem)
     }
 
+    suspend fun deleteToLevel(level: Int) {
+        gridItemDAO.deleteToLevel(level)
+    }
+
 }

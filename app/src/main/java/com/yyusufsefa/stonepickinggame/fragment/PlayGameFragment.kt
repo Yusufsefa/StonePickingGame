@@ -17,6 +17,9 @@ import kotlinx.coroutines.InternalCoroutinesApi
 
 class PlayGameFragment : Fragment(R.layout.fragment_play_game) {
 
+    private val level by lazy { arguments?.getInt("level") }
+
+
     @InternalCoroutinesApi
     private val viewmodel by lazy {
         ViewModelProvider(
@@ -34,7 +37,7 @@ class PlayGameFragment : Fragment(R.layout.fragment_play_game) {
         viewmodel.allGridItem.observe(viewLifecycleOwner, {
             gridViewPlayGame.adapter = StoneAdapter(
                 requireContext(),
-                it,
+                it.filter { it.level == level },
                 ::onClick
             )
         })

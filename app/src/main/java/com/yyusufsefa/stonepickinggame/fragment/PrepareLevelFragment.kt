@@ -74,8 +74,8 @@ class PrepareLevelFragment : Fragment(R.layout.fragment_prepare_level) {
 
     @InternalCoroutinesApi
     private fun saveLevel() {
+        level?.let { viewmodel.deleteToLevel(it) }
         val list = (gridView.adapter as StoneAdapter).gridItemList
-
         for (x in list.indices) {
             if (level == 1)
                 list[x].level = 1
