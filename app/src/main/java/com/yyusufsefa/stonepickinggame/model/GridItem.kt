@@ -21,5 +21,6 @@ data class GridItem(
 
     @ColumnInfo(name = "level")
     var level: Int? = null
+    var isBackgroundActive = false
 
 }

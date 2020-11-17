@@ -2,6 +2,7 @@ package com.yyusufsefa.stonepickinggame.adapter
 
 import android.annotation.SuppressLint
 import android.content.Context
+import android.graphics.Color
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -75,6 +76,10 @@ class StoneAdapter(
                     view.imgWbWall.visibility = View.VISIBLE
                 }
             }
+        }
+
+        if (item.isBackgroundActive){
+            view.setBackgroundColor(Color.GREEN)
         }
         return view
     }
