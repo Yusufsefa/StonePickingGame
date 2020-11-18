@@ -54,46 +54,62 @@ class PlayGameFragment : Fragment(R.layout.fragment_play_game) {
     }
 
     private fun onClick(clickedItem: GridItem) {
-        //seçilen taş hareket ettirme
-
-        maxMove = clickedItem.maxMove!!
-
         if (isGridSelected) {
-            if (clickedItem.isBackgroundActive) {
-                oldClickedItem?.mode = StoneType.NONE
-                if (clickedItem.mode != StoneType.MAINSTONE) {
-                    clickedItem.mode = StoneType.NORMALSTONE
-                    if (maxMove == 0) isGridSelected = false
-                    clickedItem.maxMove = maxMove
-                    maxMove--
-                } else requireContext().toast("Taş toplandı")
-                isGridSelected = false
-                resetAllMovableBackground()
-                (gridViewPlayGame.adapter as StoneAdapter).notifyDataSetChanged()
-            } else {
-                requireContext().toast("Taşınız oraya hareket edemez")
-            }
+            moveStone(clickedItem)
+        } else {
+            selectStone(clickedItem)
         }
-        // else de ilk defa taş seçimi yapılıyor.
+    }
+
+
+    private fun moveStone(clickedItem: GridItem) {
+        if (clickedItem.isBackgroundActive) {
+            oldClickedItem?.mode = StoneType.NONE
+            if (clickedItem.mode != StoneType.MAINSTONE) {
+                clickedItem.mode = StoneType.NORMALSTONE
+                clickedItem.maxMove = (oldClickedItem?.maxMove?.minus(1))
+            } else {
+                val size = gridList!!.filter { it.mode == StoneType.NORMALSTONE }.size
+                if (size > 0) requireContext().toast("Taş toplandı")
+                else winGame()
+            }
+            isGridSelected = false
+            resetAllMovableBackground()
+            (gridViewPlayGame.adapter as StoneAdapter).notifyDataSetChanged()
+        } else {
+            requireContext().toast("Taşınız oraya hareket edemez")
+        }
+    }
+
+    private fun selectStone(clickedItem: GridItem) {
+        if (clickedItem.mode == StoneType.NORMALSTONE && clickedItem.maxMove != 0) {
+            oldClickedItem = clickedItem
+            isGridSelected = true
+            gridMovableBackgroundChanger()
+        } else if (clickedItem.maxMove == 0) loseGame()
         else {
-            if (clickedItem.mode == StoneType.NORMALSTONE) {
-                oldClickedItem = clickedItem
-                isGridSelected = true
-                gridMovableBackgroundChanger()
-            } else {
-                requireContext().toast("Seçiminiz hareket edemez")
-            }
+            requireContext().toast("Seçiminiz hareket edemez")
         }
+    }
+
+    private fun winGame() {
+        requireContext().toast("Oyunu kazandınız")
+        requireActivity().onBackPressed()
+    }
+
+    private fun loseGame() {
+        requireContext().toast("Kaybettinnn")
+        requireActivity().onBackPressed()
     }
 
 
     private fun gridMovableBackgroundChanger() {
         val i = gridList!!.indexOf(oldClickedItem)
         val indexList = mutableListOf<Int>()
-        if (oldClickedItem?.x != 1) indexList.add(i - 10)
-        if (oldClickedItem?.x != 10) indexList.add(i + 10)
-        if (oldClickedItem?.y != 1) indexList.add(i - 1)
-        if (oldClickedItem?.y != 10) indexList.add(i + 1)
+        if (oldClickedItem?.x != 1) indexList.add(i - 1)
+        if (oldClickedItem?.x != 10) indexList.add(i + 1)
+        if (oldClickedItem?.y != 1) indexList.add(i - 10)
+        if (oldClickedItem?.y != 10) indexList.add(i + 10)
         val list = indexList.map { gridList!![it] }
         list.forEach {
             if (isGridItemAvailableForBackgroundActive(it))
