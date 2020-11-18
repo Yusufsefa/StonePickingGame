@@ -91,11 +91,15 @@ class PrepareLevelFragment : Fragment(R.layout.fragment_prepare_level) {
         var mainY = 0
         var normalX = 0
         var normalY = 0
+
         for (x in list.indices) {
             if (list[x].mode == StoneType.MAINSTONE) {
                 mainX = list[x].x
                 mainY = list[x].y
             }
+        }
+
+        for (x in list.indices) {
             if (list[x].mode == StoneType.NORMALSTONE) {
                 normalX = if (mainX > list[x].x) {
                     (mainX - list[x].x)
@@ -107,8 +111,8 @@ class PrepareLevelFragment : Fragment(R.layout.fragment_prepare_level) {
                 } else {
                     (list[x].y - mainY)
                 }
+                list[x].maxMove = (normalX + normalY)
             }
-            list[x].maxMove = (normalX + normalY)
         }
     }
 
