@@ -12,8 +12,8 @@ object MockList {
             for (y in 1..10) {
                 stoneList.add(
                     GridItem(
-                        x,
                         y,
+                        x,
                         StoneType.NONE,
                         (x + y) % 2 == 0
                     )

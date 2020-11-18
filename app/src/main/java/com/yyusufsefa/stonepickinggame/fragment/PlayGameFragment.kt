@@ -26,6 +26,8 @@ class PlayGameFragment : Fragment(R.layout.fragment_play_game) {
 
     private var isGridSelected = false
 
+    private var maxMove: Int = 0
+
 
     @InternalCoroutinesApi
     private val viewmodel by lazy {
@@ -53,12 +55,18 @@ class PlayGameFragment : Fragment(R.layout.fragment_play_game) {
 
     private fun onClick(clickedItem: GridItem) {
         //seçilen taş hareket ettirme
+
+        maxMove = clickedItem.maxMove!!
+
         if (isGridSelected) {
             if (clickedItem.isBackgroundActive) {
                 oldClickedItem?.mode = StoneType.NONE
-                if (clickedItem.mode != StoneType.MAINSTONE) clickedItem.mode =
-                    StoneType.NORMALSTONE
-                else requireContext().toast("Taş toplandı")
+                if (clickedItem.mode != StoneType.MAINSTONE) {
+                    clickedItem.mode = StoneType.NORMALSTONE
+                    if (maxMove == 0) isGridSelected = false
+                    clickedItem.maxMove = maxMove
+                    maxMove--
+                } else requireContext().toast("Taş toplandı")
                 isGridSelected = false
                 resetAllMovableBackground()
                 (gridViewPlayGame.adapter as StoneAdapter).notifyDataSetChanged()

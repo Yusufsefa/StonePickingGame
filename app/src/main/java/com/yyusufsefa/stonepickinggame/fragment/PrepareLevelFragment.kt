@@ -118,6 +118,7 @@ class PrepareLevelFragment : Fragment(R.layout.fragment_prepare_level) {
             return
         }
 
+        requireContext().toast("x:" + clickedItem.x + "y: " + clickedItem.y)
         when (gridType) {
             StoneType.MAINSTONE -> {
                 if (mainStoneLimit > 0) {
