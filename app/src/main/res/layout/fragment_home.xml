@@ -5,14 +5,17 @@
     android:layout_height="match_parent"
     android:gravity="center_horizontal"
     android:orientation="vertical"
-    tools:context=".fragment.HomeFragment">
+    tools:context=".fragment.HomeFragment"
+    android:background="@drawable/gradient_background">
 
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="50dp"
-        android:drawableLeft="@drawable/ic_mainstone"
+        android:layout_marginTop="60dp"
+        android:drawableLeft="@drawable/ic_main_stone"
         android:drawablePadding="10dp"
+        android:textStyle="bold"
+        android:textColor="@color/primary_text"
         android:text="Taş Toplama"
         android:textSize="50sp" />
 
@@ -22,8 +25,9 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginHorizontal="20dp"
-        android:layout_marginTop="100dp"
-        android:text="1 Seviyeyi Oluştur" />
+        android:textColor="#fff"
+        android:layout_marginTop="120dp"
+        android:text="1. Seviyeyi Oluştur" />
 
 
     <Button
@@ -31,30 +35,31 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginHorizontal="20dp"
-        android:layout_marginTop="30dp"
-        android:text="2 Seviyeyi Oluştur" />
+        android:textColor="#fff"
+        android:text="2. Seviyeyi Oluştur" />
 
     <View
         android:layout_width="match_parent"
-        android:layout_height="5dp"
-        android:layout_marginHorizontal="50dp"
-        android:layout_marginVertical="50dp"
-        android:background="#F0252121" />
+        android:layout_height="2dp"
+        android:layout_marginHorizontal="10dp"
+        android:layout_marginVertical="30dp"
+        android:background="#707070" />
 
     <Button
         android:id="@+id/btnPlayFirstLevel"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginHorizontal="20dp"
-        android:text="1 Seviyeyi Oyna" />
+        android:textColor="#fff"
+        android:text="1. Seviyeyi Oyna" />
 
     <Button
         android:id="@+id/btnPlaySecondLevel"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:textColor="#fff"
         android:layout_marginHorizontal="20dp"
-        android:layout_marginTop="30dp"
-        android:text="2 Seviyeyi Oyna" />
+        android:text="2. Seviyeyi Oyna" />
 
 
 </LinearLayout>

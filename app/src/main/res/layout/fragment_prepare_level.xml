@@ -39,8 +39,7 @@
             android:layout_height="80dp"
             android:layout_margin="8dp"
             android:background="@drawable/toggle_selector"
-            android:drawableTop="@drawable/ic_mainstone"
-            android:drawableTint="@color/primary"
+            android:drawableTop="@drawable/ic_main_stone"
             android:padding="5dp"
             android:textOff="Ana Taş"
             android:textOn="Ana Taş" />
@@ -51,8 +50,7 @@
             android:layout_height="80dp"
             android:layout_margin="8dp"
             android:background="@drawable/toggle_selector"
-            android:drawableTop="@drawable/ic_normalstone"
-            android:drawableTint="@color/primary"
+            android:drawableTop="@drawable/ic_normal_stone"
             android:padding="5dp"
             android:textOff="Normal Taş"
             android:textOn="Normal Taş" />
@@ -64,7 +62,6 @@
             android:layout_margin="8dp"
             android:background="@drawable/toggle_selector"
             android:drawableTop="@drawable/ic_wall"
-            android:drawableTint="@color/primary"
             android:padding="5dp"
             android:textOff="Duvar"
             android:textOn="Duvar" />

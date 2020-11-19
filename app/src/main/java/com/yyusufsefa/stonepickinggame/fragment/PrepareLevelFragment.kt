@@ -84,6 +84,7 @@ class PrepareLevelFragment : Fragment(R.layout.fragment_prepare_level) {
         }
         calculateMaxMove(list)
         viewmodel.insert(list)
+        requireContext().toast("Seviye kaydedildi")
     }
 
     private fun calculateMaxMove(list: List<GridItem>) {
@@ -122,7 +123,6 @@ class PrepareLevelFragment : Fragment(R.layout.fragment_prepare_level) {
             return
         }
 
-        requireContext().toast("x:" + clickedItem.x + "y: " + clickedItem.y)
         when (gridType) {
             StoneType.MAINSTONE -> {
                 if (mainStoneLimit > 0) {
@@ -192,9 +192,12 @@ class PrepareLevelFragment : Fragment(R.layout.fragment_prepare_level) {
         normalStone: Int,
         wall: Int
     ) {
+
+        val autoList = AutoGenerator.getAutoGridList(mainStone, normalStone, wall)
+        calculateMaxMove(autoList)
         gridView.adapter = StoneAdapter(
             requireContext(),
-            AutoGenerator.getAutoGridList(mainStone, normalStone, wall),
+            autoList,
             ::onGridViewItemClick
         )
         toggleCheckedFalser(arrayOf(toggleNormalStone, toggleMainStone, toggleWallStone))

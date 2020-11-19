@@ -12,7 +12,10 @@
         android:layout_height="wrap_content"
         android:layout_centerInParent="true"
         android:textColor="#F60606"
-        android:textSize="25sp"
+        android:textSize="20dp"
+        android:elevation="5dp"
+        android:visibility="gone"
+        android:textStyle="bold"
         tools:text="9" />
 
     <ImageView
@@ -20,23 +23,20 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         tools:visibility="invisible"
-        android:src="@drawable/ic_wall"
-        app:tint="#000000" />
+        android:src="@drawable/ic_wall" />
 
     <ImageView
         android:id="@+id/imgWbNormal"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         tools:visibility="invisible"
-        android:src="@drawable/ic_normalstone"
-        app:tint="#000000" />
+        android:src="@drawable/ic_normal_stone" />
 
     <ImageView
         android:id="@+id/imgWbMain"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         tools:visibility="invisible"
-        android:src="@drawable/ic_mainstone"
-        app:tint="#000000" />
+        android:src="@drawable/ic_main_stone" />
 
 </RelativeLayout>

@@ -11,6 +11,7 @@ import com.yyusufsefa.stonepickinggame.db.GridRoomDatabase
 import com.yyusufsefa.stonepickinggame.model.GridItem
 import com.yyusufsefa.stonepickinggame.model.StoneType
 import com.yyusufsefa.stonepickinggame.toast
+import com.yyusufsefa.stonepickinggame.toastSuccess
 import com.yyusufsefa.stonepickinggame.viewmodel.GridViewModelFactory
 import com.yyusufsefa.stonepickinggame.viewmodel.PrepareLevelViewModel
 import kotlinx.android.synthetic.main.fragment_play_game.*
@@ -43,14 +44,23 @@ class PlayGameFragment : Fragment(R.layout.fragment_play_game) {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
+        toolbar.title = "$level. Seviye"
+
         viewmodel.allGridItem.observe(viewLifecycleOwner, { it ->
             gridList = it.filter { it.level == level }
-            gridViewPlayGame.adapter = StoneAdapter(
-                requireContext(),
-                gridList!!,
-                ::onClick
-            )
+            if (gridList.isNullOrEmpty())
+                levelIsEmpty()
+            else
+                gridViewPlayGame.adapter = StoneAdapter(
+                    requireContext(),
+                    gridList!!,
+                    ::onClick
+                )
         })
+    }
+
+    private fun levelIsEmpty() {
+        requireContext().toast("Lütfen bu seviyeye ait oyun oluşturun.")
     }
 
     private fun onClick(clickedItem: GridItem) {
@@ -93,7 +103,7 @@ class PlayGameFragment : Fragment(R.layout.fragment_play_game) {
     }
 
     private fun winGame() {
-        requireContext().toast("Oyunu kazandınız")
+        requireContext().toastSuccess("Oyunu kazandınız")
         requireActivity().onBackPressed()
     }
 

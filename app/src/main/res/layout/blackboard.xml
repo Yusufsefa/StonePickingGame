@@ -13,31 +13,31 @@
         android:layout_height="wrap_content"
         android:layout_centerInParent="true"
         android:textColor="#F60606"
-        android:textSize="25sp"
-        tools:text="9" />
+        android:textSize="20dp"
+        tools:text="9"
+        android:visibility="gone"
+        android:textStyle="bold"
+        android:elevation="5dp"/>
 
     <ImageView
         android:id="@+id/imgBbWall"
         android:layout_width="match_parent"
         tools:visibility="invisible"
         android:layout_height="match_parent"
-        android:src="@drawable/ic_wall"
-        app:tint="#000000" />
+        android:src="@drawable/ic_wall" />
 
     <ImageView
         android:id="@+id/imgBbNormal"
         android:layout_width="match_parent"
         tools:visibility="invisible"
         android:layout_height="match_parent"
-        android:src="@drawable/ic_normalstone"
-        app:tint="#000000" />
+        android:src="@drawable/ic_normal_stone" />
 
     <ImageView
         android:id="@+id/imgBbMain"
         tools:visibility="invisible"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:src="@drawable/ic_mainstone"
-        app:tint="#000000" />
+        android:src="@drawable/ic_main_stone" />
 
 </RelativeLayout>
